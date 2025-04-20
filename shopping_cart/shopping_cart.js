@@ -79,5 +79,3 @@ document.addEventListener("DOMContentLoaded", () => {
   showItem("items", items);
   showItem("cart-items", cartItems);
 });
-
-// test
