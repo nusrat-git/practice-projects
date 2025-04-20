@@ -37,6 +37,12 @@ const clearCal = () => {
 };
 
 const backCal = () => {
+  const inputSplit = inputText.split(" ");
+
+  a = inputSplit[0];
+  operation = inputSplit[1];
+  b = inputSplit[2];
+
   if (b) {
     b = b.trim().slice(0, -1);
   } else if (operation) {
