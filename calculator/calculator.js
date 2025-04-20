@@ -4,6 +4,10 @@ let outputText = document.getElementById("outputText");
 let operation = "";
 let result = "";
 
+let lastChar;
+
+const isOperator = (char) => ["+", "-", "*", "/"].includes(char);
+
 const clearCal = () => {
   operation = "";
   inputText.innerText = "";
@@ -28,13 +32,17 @@ const handleInput = (btnValue) => {
 
   switch (btnValue) {
     case "=":
+      lastChar = operation.slice(-1);
+
+      if (isOperator(lastChar)) return;
+
       try {
         result = eval(operation);
         showOutput(result);
         // operation = result.toString();
       } catch (error) {
-        showOutput("Error");
-        operation = "";
+        operation = operation;
+        showOutput(operation);
       }
       break;
     case "c":
@@ -48,6 +56,9 @@ const handleInput = (btnValue) => {
         const lastNumber = operation.split(/[\+\-\*\/]/).pop();
         if (lastNumber.includes(".")) return;
       }
+
+      lastChar = operation.slice(-1);
+      if (isOperator(lastChar) && isOperator(btnValue)) return;
 
       operation += btnValue;
       inputElement.innerText = operation;
