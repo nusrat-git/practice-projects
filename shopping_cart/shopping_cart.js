@@ -64,12 +64,13 @@ const handleAddItem = (id) => {
 const handleRemoveItem = (id) => {
   const exists = cartItems.find((ele) => ele.id == id);
   if (exists) {
-    if (cartItems[id - 1].quantity > 1) {
-      cartItems[id - 1].quantity--;
+    if (exists.quantity > 1) {
+      exists.quantity--;
     } else {
       cartItems = cartItems.filter((ele) => ele.id != id);
     }
   }
+
   showItem("cart-items", cartItems, true);
   findTotal();
 };
