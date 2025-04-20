@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="practice.js"></script>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="inputText"
+      placeholder="input"
+      oninput="handleInput()"
+    />
+    <input
+      type="text"
+      id="searchText"
+      placeholder="search"
+      oninput="handleSearchInput()"
+    />
+    <br />
+    <br />
+
+    <button onclick="handleLength()">find length</button>
+    <button onclick="handleUpperConversion()">Convert Uppercase</button>
+    <button onclick="handleLowerConversion()">Convert Lowercase</button>
+    <button onclick="handleReverse()">reverse</button>
+    <button onclick="handleSearch()">search</button>
+    <button onclick="handleCountOccur()">Count</button>
+    <button onclick="handleSplit()">split</button>
+    <button onclick="handleJoin()">Join</button>
+    <button onclick="handleTrim()">Trim</button>
+    <button onclick="handleBetweenTrim()">Between Trim</button>
+    <button onclick="checkPalindrome()">palindrome</button>
+    <button onclick="findMax()">max</button>
+    <button onclick="countVowel()">count vowel</button>
+    <button onclick="print50()">Print 50</button>
+    <button onclick="findLongWord()">Long word</button>
+    <button onclick="removeDuplicate()">remove duplicate</button>
+    <button onclick="findAnagram()">anagrams</button>
+    <button onclick="capitalizeF()">capital first</button>
+
+    <p id="inputValue"></p>
+    <p id="outputText"></p>
+  </body>
+</html>

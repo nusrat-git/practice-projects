@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        margin-bottom: 20px;
+      }
+
+      #outputText {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+      }
+    </style>
+
+    <script src="word_counter.js"></script>
+  </head>
+  <body>
+    <p id="outputText">
+      Characters: 0 <br />
+      Words: 0
+    </p>
+    <textarea
+      name="text"
+      id="inputText"
+      cols="30"
+      rows="10"
+      placeholder="You can put your text here"
+      oninput="handleCount()"
+    ></textarea>
+  </body>
+</html>

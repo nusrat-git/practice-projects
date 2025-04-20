@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .calculator {
+        background: #ffffff;
+        border: 1px solid #ccc;
+        padding: 16px;
+        border-radius: 6px;
+        width: 300px;
+      }
+
+      .screen {
+        background: #eee;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        text-align: right;
+        font-size: 20px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      #outputText {
+        font-size: 14px;
+        color: #666;
+      }
+
+      .btn-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+
+      .btn {
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        background: #f0f0f0;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .btn:hover {
+        background: #e0e0e0;
+      }
+
+      .btn:active {
+        background: #d0d0d0;
+      }
+    </style>
+    <script src="calculator.js"></script>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="screen">
+        <div id="inputText" onchange="getInput()"></div>
+        <div id="outputText"></div>
+      </div>
+      <div class="btn-grid">
+        <button class="btn" value="7">7</button>
+        <button class="btn" value="8">8</button>
+        <button class="btn" value="9">9</button>
+        <button class="btn" value="/">/</button>
+
+        <button class="btn" value="4">4</button>
+        <button class="btn" value="5">5</button>
+        <button class="btn" value="6">6</button>
+        <button class="btn" value="*">*</button>
+
+        <button class="btn" value="1">1</button>
+        <button class="btn" value="2">2</button>
+        <button class="btn" value="3">3</button>
+        <button class="btn" value="-">-</button>
+
+        <button class="btn" value="0">0</button>
+        <button class="btn" value=".">.</button>
+        <button class="btn" value="=">=</button>
+        <button class="btn" value="+">+</button>
+
+        <button class="btn" value="c">C</button>
+        <button class="btn" value="b"><=</button>
+      </div>
+    </div>
+  </body>
+</html>
