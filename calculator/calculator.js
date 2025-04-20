@@ -1,80 +1,40 @@
-let a = "";
-let b = "";
-let operation = null;
+let inputText = document.getElementById("inputText");
+let outputText = document.getElementById("outputText");
 
-let inputText = "";
-let outputText = null;
-
-const handleCalculation = (valA, valB) => {
-  switch (operation) {
-    case "+":
-      outputText = valA + valB;
-      break;
-    case "-":
-      outputText = valA - valB;
-      break;
-    case "*":
-      outputText = valA * valB;
-      break;
-    case "/":
-      if (valB !== 0) {
-        outputText = valA / valB;
-      }
-      break;
-    default:
-      break;
-  }
-};
+let operation = "";
+let result = "";
 
 const clearCal = () => {
-  a = "";
-  b = "";
-  operation = null;
-  inputText = "";
-  outputText = "";
-  document.getElementById("inputText").innerText = inputText;
-  document.getElementById("outputText").innerText = outputText;
+  operation = "";
+  inputText.innerText = "";
+  outputText.innerText = "";
 };
 
 const backCal = () => {
-  const inputSplit = inputText.split(" ");
+  operation = operation.slice(0, -1);
+  inputText.innerText = operation;
 
-  a = inputSplit[0];
-  operation = inputSplit[1];
-  b = inputSplit[2];
-
-  if (b) {
-    b = b.trim().slice(0, -1);
-  } else if (operation) {
-    operation = operation.trim().slice(0, -1);
-  } else if (a) {
-    a = a.trim().slice(0, -1);
+  if (operation === "") {
+    outputText.innerText = "";
   }
 };
 
-const resetCal = () => {
-  a = outputText.toString();
-  b = "";
-  operation = null;
-};
-
-const showOutput = () => {
-  const element = document.getElementById("outputText");
-  element.innerText = `= ${outputText}`;
+const showOutput = (result) => {
+  outputText.innerText = `= ${result}`;
 };
 
 const handleInput = (btnValue) => {
-  const element = document.getElementById("inputText");
+  const inputElement = inputText;
 
   switch (btnValue) {
     case "=":
-      const valA = parseFloat(a);
-      const valB = parseFloat(b);
-      handleCalculation(valA, valB);
-      if (outputText) {
-        showOutput();
-        resetCal();
-        return;
+      try {
+        result = eval(operation);
+        showOutput(result);
+        // operation = result.toString();
+      } catch (error) {
+        showOutput("Error");
+        operation = "";
       }
       break;
     case "c":
@@ -84,30 +44,23 @@ const handleInput = (btnValue) => {
       backCal();
       break;
     default:
-      if (
-        btnValue == "+" ||
-        btnValue == "-" ||
-        btnValue == "*" ||
-        btnValue == "/"
-      ) {
-        operation = btnValue;
-      } else if (!operation) {
-        if (btnValue == "." && a.includes(".")) return;
-        a += btnValue;
-      } else {
-        if (btnValue == "." && b.includes(".")) return;
-        b += btnValue;
+      if (btnValue === ".") {
+        const lastNumber = operation.split(/[\+\-\*\/]/).pop();
+        if (lastNumber.includes(".")) return;
       }
+
+      operation += btnValue;
+      inputElement.innerText = operation;
+
       break;
   }
-
-  inputText = `${a} ${operation ? operation : ""} ${b}`;
-
-  element.innerText = inputText;
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".btn");
+
+  inputText = document.getElementById("inputText");
+  outputText = document.getElementById("outputText");
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
